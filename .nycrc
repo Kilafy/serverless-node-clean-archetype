@@ -1,0 +1,14 @@
+{
+    "all": true,
+    "reporter": "lcov",
+    "extensions": [
+        ".ts"
+    ],
+    "exclude": [
+        "test/*",
+        "coverage/*",
+        ".nyc_output/*",
+        ".webpack/",
+        "webpack.config.js"
+    ]
+}

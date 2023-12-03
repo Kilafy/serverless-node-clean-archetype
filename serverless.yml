@@ -1,0 +1,42 @@
+service: <<service-name>>
+frameworkVersion: "3"
+
+plugins:
+  - serverless-webpack
+  - serverless-aws-resource-names
+
+provider:
+  name: aws
+  architecture: x86_64
+  environment:
+    ACCOUNT: ${param:account}
+    REGION_ORIGIN: ${param:region}
+  deploymentBucket:
+    name: ${param:bucketName}
+  vpc:
+    securityGroupIds:
+      - ${param:securityGroupId}
+    subnetIds:
+      - "Fn::ImportValue": PrivateSubnet1AID
+      - "Fn::ImportValue": PrivateSubnet2AID
+
+custom:
+  serverless-aws-resource-names:
+    source: mapping.json
+  prune:
+    automatic: true
+    number: 3
+
+Outputs:
+  ServerlessDeploymentBucketName:
+    Value: !Ref ServerlessDeploymentBucketName
+    Export:
+      Name: ProjectA-${self:service}-ServerlessDeploymentBucketName
+
+functions:
+  my-function-name:
+    timeout: 20
+    handler: src/handlerHttp.lambdaHandler
+    tags:
+      bam-creator-user: <<user creator name>>
+      bam-creator-email: <<user creator email>>

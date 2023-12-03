@@ -1,0 +1,28 @@
+{
+    "template": {
+        "compiled": "cloudformation-template-update-stack.json",
+        "core": "cloudformation-template-create-stack.json"
+    },
+    "stack": "$service-function-stack",
+    "role": {
+        "Fn:Join": [
+            "-",
+            [
+                "$service",
+                "$region",
+                "$lambdaRole"
+            ]
+        ]
+    },
+    "policy": {
+        "Fn:Join": [
+            "-",
+            [
+                "$service",
+                "lambda"
+            ]
+        ]
+    },
+    "lambda": "products-$lambda",
+    "logGroup": "/aws/lambda/$service-$lambda"
+}
