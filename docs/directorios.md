@@ -32,7 +32,7 @@ a bases de datos, servicios de aws como Step functions, lambdas, RDS, Dynamo Db
 ## App
 
 En la carpeta `app` tenemos nuestra lógica de casos de uso, aquí llamaremos nuestros
-repositorios de la capa infrastructure/driving
+repositorios de la capa infrastructure/driven
 
 ## Domain
 
