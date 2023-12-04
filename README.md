@@ -14,9 +14,9 @@ responsabilidades:
 - Implementar la lógica de tu lambda
 - Implementar tus servicios externos como bases de datos o llamadas a servicios aws
 
-# Nota
+## Nota
 
-Si modificas el controlador, esta bajo tu responsabilidad la ejecución exitosa de los test
+-**Nota:** Si modificas el controlador, esta bajo tu responsabilidad la ejecución exitosa de los test
 
 # Explicación de directorios y flujo de trabajo
 

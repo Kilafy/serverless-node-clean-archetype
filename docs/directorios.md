@@ -3,16 +3,15 @@
 ## HandlerHttp
 
 Nuestro `handlerHttp.ts` se encuentra en `src/handlerHttp.ts`, este es el punto donde
-expondremos nuestras funciones en la definición del `serverless.yml` donde inicializamos las
+expondremos nuestras funciones en la definición del `serverless.yml` e inicializamos las
 dependencias de las clases o funciones
 
 ## Utilidades
 
 dentro de la carpeta `src` encontraras una carpeta llamada `utils`, en esta carpeta
-se encuentras todas las clases o funciones que funcionen en muchos lados de la aplicación
-o en varios servicios distintos.
+se encuentras todas las clases o funciones que funcionen en varios servicios distintos.
 
-Por otro lado se encuentras los archivos de constantes, en el cual se guardaran todas
+Por otro lado, se encuentra el archivo de constantes, en el cual se guardaran todas
 las constantes, enums, interfaces, types que se requieran en el proyecto para evitar
 el hard code.
 
@@ -28,7 +27,7 @@ función lambda, aquí se encuentra el controlador y las plantillas de zod
 ### Driven
 
 Es el punto de conexión con nuestros repositorios, aquí podremos hacer nuestras llamadas
-a bases de datos, o servicios de aws como Step functions, lambdas, RDS, Dynamo Db
+a bases de datos, servicios de aws como Step functions, lambdas, RDS, Dynamo Db
 
 ## App
 
