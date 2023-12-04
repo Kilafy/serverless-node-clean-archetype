@@ -18,6 +18,11 @@ responsabilidades:
 
 Si modificas el controlador, esta bajo tu responsabilidad la ejecución exitosa de los test
 
+# Explicación de directorios y flujo de trabajo
+
+Aquí encontraras una explicación de las carpetas siguiendo los estándares de código:
+[directorios](./docs/directorios.md)
+
 # Scripts del Package.
 
 Este proyecto utiliza scripts definidos en el package.json para ejecutar pruebas y generar informes de cobertura.
