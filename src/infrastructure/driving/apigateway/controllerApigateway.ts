@@ -1,7 +1,11 @@
 import { type APIGatewayEvent } from "aws-lambda";
 import { zodValidator } from "../../../utils/zodValidator";
 import type z from "zod";
-import { type ApiResponse, getHttpResponse } from "../../../utils/apiResponse";
+import {
+  type ApiResponse,
+  HttpResponse,
+  ResponseStatus,
+} from "../../../utils/apiResponse";
 import { decodeJwt } from "../../../utils/decodeJws";
 import { type BasicUseCase } from "../../../app/usecases/basicUseCase";
 
@@ -20,7 +24,8 @@ export const controllerApigatewayHttp: ControllerApigatewayHttp =
       const validateResult = zodValidator(zodSchema, body);
 
       if (!validateResult.success) {
-        return getHttpResponse.badRequest(
+        return HttpResponse(
+          ResponseStatus.BAD_REQUEST,
           validateResult.message,
           validateResult.errors,
         );
@@ -31,6 +36,10 @@ export const controllerApigatewayHttp: ControllerApigatewayHttp =
 
       return result;
     } catch (error) {
-      return getHttpResponse.serviceUnavailable(error as string);
+      return HttpResponse(
+        ResponseStatus.SERVICE_UNAVAILABLE,
+        "Uncontrolled error",
+        error as string,
+      );
     }
   };
