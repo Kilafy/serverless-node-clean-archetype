@@ -35,6 +35,9 @@ Outputs:
 
 functions:
   my-function-name:
+    environment:
+      API_URL: ${param:apiUrl}
+      
     timeout: 20
     handler: src/handlerHttp.lambdaHandler
     tags:

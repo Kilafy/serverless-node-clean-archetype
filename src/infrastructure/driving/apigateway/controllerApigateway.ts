@@ -7,15 +7,15 @@ import {
   ResponseStatus,
 } from "../../../utils/apiResponse";
 import { decodeJwt } from "../../../utils/decodeJws";
-import { type BasicUseCase } from "../../../app/usecases/basicUseCase";
+import { IBreedsUseCase } from "../../../domain/usecases/IBreedsUseCase";
 
 type ControllerApigatewayHttp = (
-  serviceUseCase: BasicUseCase,
+  serviceUseCase: IBreedsUseCase,
   zodSchema: z.Schema,
 ) => (event: APIGatewayEvent, context: unknown) => Promise<ApiResponse>;
 
 export const controllerApigatewayHttp: ControllerApigatewayHttp =
-  (serviceUseCase: BasicUseCase, zodSchema: z.Schema) =>
+  (serviceUseCase: IBreedsUseCase, zodSchema: z.Schema) =>
   async (event: APIGatewayEvent, context: unknown) => {
     try {
       console.log(context);
@@ -32,10 +32,19 @@ export const controllerApigatewayHttp: ControllerApigatewayHttp =
       }
 
       const jwtPayload = decodeJwt(String(event.headers.Authorization));
-      const result = await serviceUseCase.run(body, jwtPayload?.aud);
+      if (!jwtPayload) {
+        return HttpResponse(
+          ResponseStatus.UNAUTHORIZED,
+          "Unauthorized",
+          "Invalid JWT",
+        );
+      }
+
+      const result = await serviceUseCase.getBreeds();
 
       return result;
     } catch (error) {
+      console.error(error);
       return HttpResponse(
         ResponseStatus.SERVICE_UNAVAILABLE,
         "Uncontrolled error",

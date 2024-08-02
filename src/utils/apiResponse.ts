@@ -73,6 +73,10 @@ export const HttpResponseList: THttpResponse = {
     statusCode: ResponseStatus.UNCONTROLLED_ERROR,
     code: ResponseCode.UNCONTROLLED_ERROR,
   },
+  [ResponseStatus.UNAUTHORIZED]: {
+    statusCode: ResponseStatus.UNAUTHORIZED,
+    code: ResponseCode.UNAUTHORIZED,
+  },
 };
 
 export const HttpResponse = (
